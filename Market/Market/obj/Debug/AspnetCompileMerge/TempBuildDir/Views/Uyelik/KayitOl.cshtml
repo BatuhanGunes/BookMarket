@@ -1,0 +1,137 @@
+﻿@model Market.Models.Kisi
+
+
+    @{
+        ViewBag.Title = "KayitOl";
+        Layout = "~/Views/_LayoutPage1.cshtml";
+    }
+
+    <!-- //navigation -->
+    <!-- breadcrumbs -->
+    <div class="breadcrumbs">
+        <div class="container">
+            <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+                <li><a href="~/"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Ana Sayfa</a></li>
+                <li class="active">Kayıt Ol</li>
+            </ol>
+        </div>
+    </div>
+    <!-- //breadcrumbs -->
+   
+
+     <!-- register -->
+    <div class="register">
+        <div class="container">
+
+            @using (Html.BeginForm())
+            {
+
+                @Html.AntiForgeryToken()
+
+                <h2>Kayıt Ol</h2>
+
+
+                <div class="login-form-grids">
+                    <h5>Profil Bilgileri</h5>
+
+
+                    <div class="inputField ">
+                        <p>İsim *</p>
+                        <div class="editor-field">
+                            @Html.TextBoxFor(model => model.Ad)
+                            @Html.ValidationMessageFor(model => model.Ad)
+                        </div>
+                    </div>
+
+                    <div class="inputField ">
+                        <p>Soyisim *</p>
+                        <div class="editor-field">
+                            @Html.TextBoxFor(model => model.Soyad)
+                            @Html.ValidationMessageFor(model => model.Soyad)
+                        </div>
+                    </div>
+
+                    <div class="inputField ">
+                        <p>Cep Telefonu</p>
+                        <div class="editor-field">
+                            @Html.TextBoxFor(model => model.TelNo)
+                            @Html.ValidationMessageFor(model => model.TelNo)
+                        </div>
+                    </div>
+
+                    <br />
+                    <p>Cinsiyet</p>
+                    <br />
+                    <div class="inputField genderField">
+                        <div class="genderContainer">
+                            <div class="genderArea">
+                                <p>
+                                    @Html.RadioButtonFor(model => model.Cinsiyet, "Erkek")
+                                    <span class="checkmark"></span>
+                                    <label for="genderMale">Erkek</label>
+
+                                    &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+
+                                    @Html.RadioButtonFor(model => model.Cinsiyet, "Kadin")
+                                    <span class="checkmark"></span>
+                                    <label for="genderFemale">Kadın</label>
+                                </p>
+                            </div>
+
+                            <br />
+                            @Html.ValidationMessageFor(model => model.Cinsiyet)
+                        </div>
+                    </div>
+
+
+                    <div class="register-check-box">
+                        <div class="check">
+                            <label class="checkbox"><input type="checkbox" name="checkbox"><i> </i>Tarafımla pazarlama ve tanıtım amaçlı iletişime geçilmesine izin veriyorum.</label>
+                        </div>
+                    </div>
+
+
+                    <br />
+                    <h6>Giriş Bilgileri</h6>
+
+
+                    <div class="inputField ">
+                        <p>E-Posta Adresi *</p>
+                        <div class="editor-field">
+                            @Html.TextBoxFor(model => model.Eposta)
+                            @Html.ValidationMessageFor(model => model.Eposta)
+                        </div>
+                    </div>
+
+
+                    <div class="inputField ">
+                        <p>Parola *</p>
+                        <div class="editor-field">
+                            @Html.TextBoxFor(model => model.Parola)
+                            @Html.ValidationMessageFor(model => model.Parola)
+                        </div>
+                    </div>
+
+                    <div class="inputField ">
+                        <p>Parola (Tekrar) *</p>
+                        <div class="editor-field">
+                            @Html.TextBoxFor(model => model.Parola)
+                            @Html.ValidationMessageFor(model => model.Parola)
+                        </div>
+                    </div>
+
+                    <div class="check">
+                        <label class="checkbox"><input type="checkbox" name="checkbox"><i> </i>Üyelik Sözleşmesi şartlarını okudum ve kabul ediyorum.</label>
+                    </div>
+
+                    <br />
+                    <input type="submit" value="Kayıt Ol">
+
+                    <br /><br />
+
+                    <p><a href="~/">AnaSayfa</a>'ya Geri Dön</p>
+                </div>
+            }
+        </div>
+    </div>
+    <!-- //register -->

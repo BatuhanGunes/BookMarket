@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Market.Models.Kisi>
+
+@{
+    /**/
+
+    ViewBag.Title = "Profil";
+    Layout = "~/Views/_LayoutPage1.cshtml";
+}
+
+<div class="register">
+    <div class="container">
+
+        <h2>Profil</h2>
+
+        <div class="login-form-grids">
+
+
+            <br />
+
+
+
+            @foreach (var item in Model)
+            {
+                if (@Html.DisplayFor(modelItem => item.Cinsiyet).ToString().Equals("Erkek"))
+                {
+            <center><img src="~/images/tmale.png" alt="" width="200" height="300" /></center>
+                }
+                else
+                {
+            <center><img src="~/images/tfemale.png" alt="" width="200" height="300" /></center>
+                }
+                <br />
+                <table class="table table-bordered table-responsive table-hover">
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.Ad)</th>
+                        <td>@Html.DisplayFor(modelItem => item.Ad)</td>
+                    </tr>
+
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.Soyad)</th>
+                        <td>@Html.DisplayFor(modelItem => item.Soyad)</td>
+                    </tr>
+
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.Eposta)</th>
+                        <td>@Html.DisplayFor(modelItem => item.Eposta)</td>
+                    </tr>
+
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.TelNo)</th>
+                        <td>@Html.DisplayFor(modelItem => item.TelNo)</td>
+                    </tr>
+
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.Cinsiyet)</th>
+                        <td>@Html.DisplayFor(modelItem => item.Cinsiyet)</td>
+                    </tr>
+
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.Parola)</th>
+                        <td>*****</td>
+                    </tr>
+                </table>
+                }
+
+</div>
+    </div>
+</div>

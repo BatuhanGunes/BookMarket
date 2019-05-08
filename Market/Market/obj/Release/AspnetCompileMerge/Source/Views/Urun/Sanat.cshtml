@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Market.Models.Kitap>
+
+@{
+    ViewBag.Title = "Sanat";
+    Layout = "~/Views/_LayoutPage1.cshtml";
+}
+
+<!-- //navigation -->
+<!-- breadcrumbs -->
+<div class="breadcrumbs">
+    <div class="container">
+        <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+            <li><a href="~/Ana/Index"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>AnaSayfa</a></li>
+            <li><a href="~/Urun/Urunler">Ürünler</a></li>
+            <li class="active">Sanat - Tasarım</li>
+        </ol>
+    </div>
+</div>
+<!-- //breadcrumbs -->
+<!--- products --->
+
+<div class="products">
+    <div class="container">
+
+        <div class="register">
+            <h2>Sanat - Tasarım</h2>
+        </div>
+
+        <div class="col-md-4 products-left">
+            <div class="categories">
+                <h2>Kategoriler</h2>
+                <ul class="cate">
+                    <li><a href="Egitim"><i class="fa fa-arrow-right" aria-hidden="true"></i>Eğitim</a></li>
+                    <li><a href="Edebiyat"><i class="fa fa-arrow-right" aria-hidden="true"></i>Edebiyat</a></li>
+                    <li><a href="Arastirma"><i class="fa fa-arrow-right" aria-hidden="true"></i>Araştırma - Tarih</a></li>
+                    <li><a href="Cocuk"><i class="fa fa-arrow-right" aria-hidden="true"></i>Çocuk ve Gençlik</a> </li>
+                    <li><a href="Din"><i class="fa fa-arrow-right" aria-hidden="true"></i>Din - Mitoloji</a> </li>
+                    <li><a href="Sanat"><i class="fa fa-arrow-right" aria-hidden="true"></i>Sanat - Tasarım</a></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="col-md-8 products-right">
+            <div class="agile_top_brands_grids">
+
+                @foreach (var item in Model)
+                {
+                    <div class="col-md-4 top_brand_left">
+                        <div class="hover14 column">
+                            <div class="agile_top_brand_left_grid">
+
+                                <div class="agile_top_brand_left_grid_pos">
+                                    <img src="~/images/offer.png" alt=" " class="img-responsive">
+                                </div>
+
+                                <div class="agile_top_brand_left_grid1">
+                                    <figure>
+                                        <div class="snipcart-item block">
+                                            <div class="snipcart-thumb">
+                                                <a href="~/Urun/TekUrun"><img title=" " alt=" " src="~/images/pf44.png"></a>
+                                                <p>@Html.DisplayFor(modelItem => item.KitapAdi)</p>
+                                                <h4>@Html.DisplayFor(modelItem => item.Fiyat)   ₺</h4>
+                                            </div>
+                                        </div>
+                                    </figure>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                }
+
+            </div>
+        </div>
+
+
+        <div class="clearfix"> </div>
+    </div>
+</div>
+<!--- products --->

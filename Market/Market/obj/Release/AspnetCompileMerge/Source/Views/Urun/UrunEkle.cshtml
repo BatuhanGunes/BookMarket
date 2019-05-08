@@ -1,0 +1,163 @@
+﻿@model Market.Models.Kitap
+
+@{
+    ViewBag.Title = "UrunEkle";
+    Layout = "~/Views/_LayoutPage1.cshtml";
+}
+
+<!-- //navigation -->
+<!-- breadcrumbs -->
+<div class="breadcrumbs">
+    <div class="container">
+        <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+            <li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Ana Sayfa</a></li>
+            <li class="active">Urun Ekle</li>
+        </ol>
+    </div>
+</div>
+<!-- //breadcrumbs -->
+<!-- register -->
+<div class="register">
+    <div class="container">
+
+        @using (Html.BeginForm())
+        {
+
+            @Html.AntiForgeryToken()
+
+        <h2>Urun Ekle</h2>
+
+
+            <div class="login-form-grids">
+                <h5>Ürün Bilgileri</h5>
+
+
+                <div class="inputField ">
+                    <p>Kitap Adi *</p>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(model => model.KitapAdi)
+                        @Html.ValidationMessageFor(model => model.KitapAdi)
+                    </div>
+                </div>
+
+                <div class="inputField ">
+                    <p>Yazar Adi</p>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(model => model.YazarAdi)
+                        @Html.ValidationMessageFor(model => model.YazarAdi)
+                    </div>
+                </div>
+
+                <div class="inputField ">
+                    <p>Yayin Evi</p>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(model => model.YayinEvi)
+                        @Html.ValidationMessageFor(model => model.YayinEvi)
+                    </div>
+                </div>
+
+                <div class="inputField ">
+                    <p>Sayfa Sayisi</p>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(model => model.SayfaSayisi)
+                        @Html.ValidationMessageFor(model => model.SayfaSayisi)
+                    </div>
+                </div>
+
+                <div class="inputField ">
+                    <p>Basim Yılı</p>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(model => model.BasimYili)
+                        @Html.ValidationMessageFor(model => model.BasimYili)
+                    </div>
+                </div>
+
+                <div class="inputField ">
+                    <p>Fiyat *</p>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(model => model.Fiyat)
+                        @Html.ValidationMessageFor(model => model.Fiyat)
+                    </div>
+                </div>
+
+                <div class="inputField ">
+                    <p>Açıklama</p>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(model => model.Aciklama)
+                        @Html.ValidationMessageFor(model => model.Aciklama)
+                    </div>
+                </div>
+
+                <br />
+                <p>Kategori</p>
+                <br />
+                <div class="inputField genderField">
+                    <div class="genderContainer">
+                        <div class="genderArea">
+                            <table>
+                                <tr>
+                                    <th>
+                                        @Html.RadioButtonFor(model => model.KitapTurID, "1")
+                                        <span class="checkmark"></span>
+                                        <label for="genderMale">Eğitim</label>
+                                    </th>
+                                    <th>
+                                        &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+                                    </th>
+                                    <th>
+                                        @Html.RadioButtonFor(model => model.KitapTurID, "2")
+                                        <span class="checkmark"></span>
+                                        <label for="genderFemale">Edebiyat</label>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        @Html.RadioButtonFor(model => model.KitapTurID, "3")
+                                        <span class="checkmark"></span>
+                                        <label for="genderFemale">Arastırma - Tarih</label>
+                                    </th>
+                                    <th>
+                                        &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+                                    </th>
+                                    <th>
+                                        @Html.RadioButtonFor(model => model.KitapTurID, "4")
+                                        <span class="checkmark"></span>
+                                        <label for="genderFemale">Çocuk ve Gençlik</label>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        @Html.RadioButtonFor(model => model.KitapTurID, "5")
+                                        <span class="checkmark"></span>
+                                        <label for="genderFemale">Din Mitoloji</label>
+                                    </th>
+                                    <th>
+                                        &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+                                    </th>
+                                    <th>
+                                        @Html.RadioButtonFor(model => model.KitapTurID, "6")
+                                        <span class="checkmark"></span>
+                                        <label for="genderFemale">Sanat - Tasarım</label>
+                                    </th>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <br />
+                        @Html.ValidationMessageFor(model => model.KitapTurID)
+                    </div>
+                </div>
+
+
+
+                <br />
+                <input type="submit" value="Ürünü Yayımla">
+
+                <br /><br />
+
+                <p><a href="~/index.html">AnaSayfa</a>'ya Geri Dön</p>
+            </div>
+        }
+    </div>
+</div>
+<!-- //register -->

@@ -1,0 +1,118 @@
+﻿@model IEnumerable<Market.Models.Kitap>
+
+@{
+    ViewBag.Title = "SatinAl";
+    Layout = "~/Views/_LayoutPage1.cshtml";
+}
+
+
+
+<link href="~/css/stylecredit.css" rel="stylesheet" />
+<link href="~/css/style.css" rel="stylesheet" />
+<div class="main">
+    <div class="register">
+        <h2>Ödeme Formu</h2>
+    </div>
+
+    <form action="#" method="post">
+        <div class="w3_agile_main_grids">
+
+            <div class="agileits_w3layouts_main_grid">
+                <div class="agile_main_grid_left">
+
+                    <h3>Kişisel Bilgiler :</h3>
+                    <input type="text" name="First Name" placeholder="İsim" required="">
+                    <input type="text" name="Last Name" placeholder="Soyisim" required="">
+                    <input type="email" name="Email" placeholder="E-posta" required="">
+                    <input type="text" name="Address" placeholder="Adres" required="">
+
+
+                    <select id="w3_agileits_select1" class="w3layouts_select" onchange="change_country(this.value)" required="">
+                        <option value="">Şehir</option>
+                        <option value="">İstanbul</option>
+                        <option value="">Ankara</option>
+                        <option value="">Kütahya</option>
+                        <option value="">Eskişehir</option>
+                        <option value="">Diğer</option>
+                    </select>
+                    <input type="text" name="Phone Number" placeholder="Telefon Numarası" required="">
+                    <textarea name="Message" placeholder="Ek Bilgi..." required=""></textarea>
+
+                </div>
+                <div class="agile_main_grid_left">
+                    <div class="w3_agileits_main_grid_left_grid">
+                        <h3>Ürün Bilgisi :</h3>
+                        <div class="agileits_w3layouts_main_grid">
+                            <div class="agile_top_brand_left_grid">
+
+                                <img src="~/images/pf44.png" alt=" " class="img-responsive" width="100" height="150">
+
+                            </div>
+
+                            <br />
+
+                            <div>
+
+                                @foreach (var item in Model)
+                                {
+
+
+                                    <h4>Kitap Adi   &#160;:&#160; @Html.DisplayFor(modelItem => item.KitapAdi)</h4>
+                                    <br />
+                                    <h4>Fiyat       &#160;:&#160; @Html.DisplayFor(modelItem => item.Fiyat)   ₺</h4>
+                                }
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="w3_agileits_qualifications">
+                        <h3>Credit Card</h3>
+                        <div>
+                            <div>
+                                <img src="~/images/card.png" alt=" " class="img-responsive">
+                            </div>
+                        </div>
+
+                        <br />
+
+                        <div class="card-bounding agileits">
+
+                            <div class="card-details">
+                                <aside>Kart Üzetindeki İsim:</aside>
+                                <input type="text" name="name" placeholder="Kart Üzetindeki İsim" required="">
+                            </div>
+                            <aside>Kat Numarası:</aside>
+                            <div class="card-details">
+                                <!--- ".card-type" is a sprite used as a background image with associated classes for the major card types, providing x-y coordinates for the sprite --->
+
+                                <input type="text" name="card number" class="hm" placeholder="0000 0000 0000 0000" maxlength="19" onkeyup="$cc.validate(event)" required="">
+                                <!-- The checkmark ".card-valid" used is a custom font from icomoon.io --->
+
+                            </div>
+                            <div class="card-details agileits-w3layouts">
+                                <div class="expiration">
+                                    <aside>Son Kullanma T.</aside>
+                                    <input type="text" name="date" onkeyup="$cc.expiry.call(this,event)" maxlength="7" placeholder="mm/yyyy" required="">
+                                </div>
+                                <div class="cvv">
+                                    <aside>CVV</aside>
+                                    <input type="text" name="cvv" placeholder="XXX" maxlength="3" required="">
+                                </div>
+                                <div class="clear">	</div>
+                            </div>
+                                <input type="submit" value="Satın Al">
+                            </div>
+                    </div>
+
+                </div>
+
+                <div class="clear"> </div>
+
+            </div>
+        </div>
+    </form>
+</div>
+

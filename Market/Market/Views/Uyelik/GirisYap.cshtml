@@ -1,0 +1,65 @@
+﻿@model Market.Models.Kisi
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutPage1.cshtml";
+}
+
+
+    <!-- //navigation -->
+    <!-- breadcrumbs -->
+    <div class="breadcrumbs">
+        <div class="container">
+            <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+                <li><a href="~/"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>AnaSayfa</a></li>
+                <li class="active">Giriş Yap</li>
+            </ol>
+        </div>
+    </div>
+    <!-- //breadcrumbs -->
+    <!-- login -->
+    <div class="login">
+        <div class="container">
+
+            @using (Html.BeginForm())
+            {
+
+                @Html.AntiForgeryToken()
+
+                <h2>Giriş Yap</h2>
+
+                <div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s">
+                    <form method="post">
+                        <div class="inputField ">
+                            <h6>E-Posta Adresi : </h6>
+                            <div class="editor-field">
+                                @Html.TextBoxFor(model => model.Eposta)
+                                @Html.ValidationMessageFor(model => model.Eposta)
+                            </div>
+                        </div>
+
+                        <div class="inputField ">
+                            <h6>Parola : </h6>
+                            <div class="editor-field">
+                                @Html.PasswordFor(model => model.Parola)
+                                @Html.ValidationMessageFor(model => model.Parola)
+                            </div>
+                        </div>
+
+
+                        <div class="forgot">
+                            <a href="#">Parolamı Unuttum</a>
+                        </div>
+                        <input type="submit" value="Giriş Yap">
+                    </form>
+                </div>
+            }
+
+
+            <h4>Üye Değil misiniz?</h4>
+            <p><a href="~/Uyelik/KayitOl">Kayıt OL</a> Yada <a href="~/">AnaSayfa</a>'ya Geri Dön</p>
+
+
+        </div>
+    </div>
+    <!-- //login -->

@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BookMarketModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Adres">
+    <Key>
+      <PropertyRef Name="AdresID" />
+    </Key>
+    <Property Name="AdresID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ilce" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AdresAciklamasi" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="KisiID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Kisi" Relationship="Self.FK_Adres_Kisi" FromRole="Adres" ToRole="Kisi" />
+  </EntityType>
+  <EntityType Name="Kisi">
+    <Key>
+      <PropertyRef Name="KisiID" />
+    </Key>
+    <Property Name="KisiID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SepetID" Type="Int32" />
+    <Property Name="Ad" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Soyad" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Eposta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TelNo" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+    <Property Name="Cinsiyet" Type="Boolean" />
+    <Property Name="Parola" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Adres" Relationship="Self.FK_Adres_Kisi" FromRole="Kisi" ToRole="Adres" />
+    <NavigationProperty Name="Kitap" Relationship="Self.FK_Kitap_Kisi" FromRole="Kisi" ToRole="Kitap" />
+  </EntityType>
+  <EntityType Name="Kitap">
+    <Key>
+      <PropertyRef Name="KitapID" />
+    </Key>
+    <Property Name="KitapID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KitapAdi" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="YazarAdi" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="YayinEvi" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="SayfaSayisi" Type="Int32" />
+    <Property Name="BasimYili" Type="DateTime" Precision="0" />
+    <Property Name="Fiyat" Type="Double" Nullable="false" />
+    <Property Name="Aciklama" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Resim" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="KitapTurID" Type="Int32" Nullable="false" />
+    <Property Name="KisiID" Type="Int32" Nullable="false" />
+    <Property Name="Durum" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Kisi" Relationship="Self.FK_Kitap_Kisi" FromRole="Kitap" ToRole="Kisi" />
+    <NavigationProperty Name="KitapTuru" Relationship="Self.FK_Kitap_KitapTuru" FromRole="Kitap" ToRole="KitapTuru" />
+  </EntityType>
+  <EntityType Name="KitapTuru">
+    <Key>
+      <PropertyRef Name="KitapTurID" />
+    </Key>
+    <Property Name="KitapTurID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KitapTurIsmi" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Kitap" Relationship="Self.FK_Kitap_KitapTuru" FromRole="KitapTuru" ToRole="Kitap" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_Adres_Kisi">
+    <End Role="Kisi" Type="Self.Kisi" Multiplicity="1" />
+    <End Role="Adres" Type="Self.Adres" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kisi">
+        <PropertyRef Name="KisiID" />
+      </Principal>
+      <Dependent Role="Adres">
+        <PropertyRef Name="KisiID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kitap_Kisi">
+    <End Role="Kisi" Type="Self.Kisi" Multiplicity="1" />
+    <End Role="Kitap" Type="Self.Kitap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kisi">
+        <PropertyRef Name="KisiID" />
+      </Principal>
+      <Dependent Role="Kitap">
+        <PropertyRef Name="KisiID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kitap_KitapTuru">
+    <End Role="KitapTuru" Type="Self.KitapTuru" Multiplicity="1" />
+    <End Role="Kitap" Type="Self.Kitap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KitapTuru">
+        <PropertyRef Name="KitapTurID" />
+      </Principal>
+      <Dependent Role="Kitap">
+        <PropertyRef Name="KitapTurID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BookMarketEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Adres" EntityType="Self.Adres" />
+    <EntitySet Name="Kisi" EntityType="Self.Kisi" />
+    <EntitySet Name="Kitap" EntityType="Self.Kitap" />
+    <EntitySet Name="KitapTuru" EntityType="Self.KitapTuru" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <AssociationSet Name="FK_Adres_Kisi" Association="Self.FK_Adres_Kisi">
+      <End Role="Kisi" EntitySet="Kisi" />
+      <End Role="Adres" EntitySet="Adres" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kitap_Kisi" Association="Self.FK_Kitap_Kisi">
+      <End Role="Kisi" EntitySet="Kisi" />
+      <End Role="Kitap" EntitySet="Kitap" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kitap_KitapTuru" Association="Self.FK_Kitap_KitapTuru">
+      <End Role="KitapTuru" EntitySet="KitapTuru" />
+      <End Role="Kitap" EntitySet="Kitap" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

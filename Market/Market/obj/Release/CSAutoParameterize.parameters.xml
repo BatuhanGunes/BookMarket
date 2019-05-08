@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="BookMarketEntities-Web.config Connection String" description="BookMarketEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/Models.Model.csdl|res://*/Models.Model.ssdl|res://*/Models.Model.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=DESKTOP-HRCK026;initial catalog=BookMarket;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Workspace\\virtual-studio\\Market\\Market\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='BookMarketEntities']/@connectionString" />
+  </parameter>
+  <parameter name="Model1-Web.config Connection String" description="Model1 Connection String used in web.config by the application to access the database." defaultValue="data source=DESKTOP-HRCK026;initial catalog=BookMarket;integrated security=True;multipleactiveresultsets=True;application name=EntityFramework" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Workspace\\virtual-studio\\Market\\Market\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Model1']/@connectionString" />
+  </parameter>
+  <parameter name="ModelMarket-Web.config Connection String" description="ModelMarket Connection String used in web.config by the application to access the database." defaultValue="data source=DESKTOP-HRCK026;initial catalog=BookMarket;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Workspace\\virtual-studio\\Market\\Market\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='ModelMarket']/@connectionString" />
+  </parameter>
+  <parameter name="Model11-Web.config Connection String" description="Model11 Connection String used in web.config by the application to access the database." defaultValue="data source=DESKTOP-JMBO9GC;initial catalog=BookMarket;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Workspace\\virtual-studio\\Market\\Market\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Model11']/@connectionString" />
+  </parameter>
+</parameters>
