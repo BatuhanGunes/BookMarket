@@ -12,8 +12,6 @@ namespace Market.Controllers
 
         private Model db = new Model();
 
-
-        int kitap_ID;
         // GET: Urunler
         public ActionResult Urunler(Kitap kitap)
         {
@@ -32,10 +30,7 @@ namespace Market.Controllers
                 state = ctx.Kitap.Where(s => s.KitapID == kitap.KitapID).FirstOrDefault();
                     return View(db.Kitap);
                 
-            }
-
-                
-            
+            }  
         }
         
         public ActionResult TekUrun()
