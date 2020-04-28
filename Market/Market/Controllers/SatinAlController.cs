@@ -9,16 +9,16 @@ namespace Market.Controllers
 {
     public class SatinAlController : Controller
     {
-        private Model db = new Model();
+        private Model1 db = new Model1();
 
         // GET: SatinAl
         public ActionResult SatinAl()
         {
-            using (Model ctx = new Model())   //veritabanı bağlantısı oluşturuyoruz. Burada Model1 bizim veri tabanını uygulamaya eklerken verdiğimiz isim
+            using (Model1 ctx = new Model1())   //veritabanı bağlantısı oluşturuyoruz. Burada Model1 bizim veri tabanını uygulamaya eklerken verdiğimiz isim
             {
                 string param = this.Request.QueryString["Kitap"];
                 int x = Convert.ToInt32(param);
-                var state = ctx.Kitap.Where(s => s.KitapID == x).ToList();
+                var state = ctx.Kitaps.Where(s => s.KitapID == x).ToList();
 
                 if (state != null)
                 {

@@ -12,8 +12,8 @@ namespace Market.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Kisi()
         {
-            Adres = new HashSet<Adres>();
-            Kitap = new HashSet<Kitap>();
+            Adres = new HashSet<Adre>();
+            Kitaps = new HashSet<Kitap>();
         }
 
         public int KisiID { get; set; }
@@ -35,17 +35,16 @@ namespace Market.Models
         [StringLength(11)]
         public string TelNo { get; set; }
 
-        [StringLength(50)]
-        public string Cinsiyet { get; set; }
+        public bool? Cinsiyet { get; set; }
 
         [Required]
         [StringLength(16)]
         public string Parola { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Adres> Adres { get; set; }
+        public virtual ICollection<Adre> Adres { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Kitap> Kitap { get; set; }
+        public virtual ICollection<Kitap> Kitaps { get; set; }
     }
 }

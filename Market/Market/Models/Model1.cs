@@ -5,18 +5,18 @@ namespace Market.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class Model : DbContext
+    public partial class Model1 : DbContext
     {
-        public Model()
-            : base("name=Model11")
+        public Model1()
+            : base("name=Model12")
         {
         }
 
-        public virtual DbSet<Adres> Adres { get; set; }
-        public virtual DbSet<Kisi> Kisi { get; set; }
-        public virtual DbSet<Kitap> Kitap { get; set; }
-        public virtual DbSet<KitapTuru> KitapTuru { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<Adre> Adres { get; set; }
+        public virtual DbSet<Kisi> Kisis { get; set; }
+        public virtual DbSet<Kitap> Kitaps { get; set; }
+        public virtual DbSet<KitapTuru> KitapTurus { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -26,7 +26,7 @@ namespace Market.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Kisi>()
-                .HasMany(e => e.Kitap)
+                .HasMany(e => e.Kitaps)
                 .WithRequired(e => e.Kisi)
                 .WillCascadeOnDelete(false);
 
@@ -35,7 +35,7 @@ namespace Market.Models
                 .IsFixedLength();
 
             modelBuilder.Entity<KitapTuru>()
-                .HasMany(e => e.Kitap)
+                .HasMany(e => e.Kitaps)
                 .WithRequired(e => e.KitapTuru)
                 .WillCascadeOnDelete(false);
         }

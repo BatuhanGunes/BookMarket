@@ -10,36 +10,36 @@ namespace Market.Controllers
     public class UrunController : Controller
     {
 
-        private Model db = new Model();
+        private Model1 db = new Model1();
 
         // GET: Urunler
         public ActionResult Urunler(Kitap kitap)
         {
 
-            using (Model ctx = new Model())   //veritabanı bağlantısı oluşturuyoruz. Burada Model1 bizim veri tabanını uygulamaya eklerken verdiğimiz isim
+            using (Model1 ctx = new Model1())   //veritabanı bağlantısı oluşturuyoruz. Burada Model1 bizim veri tabanını uygulamaya eklerken verdiğimiz isim
             {
                 string param = this.Request.QueryString["KitapAdi"];
                 Kitap state;
 
                 if (param != null)
                 {
-                    var stated = ctx.Kitap.Where(s => s.KitapAdi.Contains(param)).ToList();
+                    var stated = ctx.Kitaps.Where(s => s.KitapAdi.Contains(param)).ToList();
                     return View(stated);
                 }
                 else
-                state = ctx.Kitap.Where(s => s.KitapID == kitap.KitapID).FirstOrDefault();
-                    return View(db.Kitap);
+                state = ctx.Kitaps.Where(s => s.KitapID == kitap.KitapID).FirstOrDefault();
+                    return View(db.Kitaps);
                 
             }  
         }
         
         public ActionResult TekUrun()
         {
-            using (Model ctx = new Model())   //veritabanı bağlantısı oluşturuyoruz. Burada Model1 bizim veri tabanını uygulamaya eklerken verdiğimiz isim
+            using (Model1 ctx = new Model1())   //veritabanı bağlantısı oluşturuyoruz. Burada Model1 bizim veri tabanını uygulamaya eklerken verdiğimiz isim
             {
                 string param = this.Request.QueryString["Kitap"];
                 int x = Convert.ToInt32(param);
-                var state = ctx.Kitap.Where(s => s.KitapID == x).ToList();
+                var state = ctx.Kitaps.Where(s => s.KitapID == x).ToList();
 
                 if (state != null)
                 {
@@ -62,7 +62,7 @@ namespace Market.Controllers
         [HttpPost]
         public ActionResult UrunEkle(Kitap kitap)
         {
-            using (Model ctx = new Model())
+            using (Model1 ctx = new Model1())
             {
                 Kitap Item = new Kitap();
 
@@ -77,7 +77,7 @@ namespace Market.Controllers
                 Item.KisiID = 1;
                 Item.Durum = true;
 
-                ctx.Kitap.Add(Item);     //Oluşturduğumuz formu kişi tablosuna ekliyoruz.
+                ctx.Kitaps.Add(Item);     //Oluşturduğumuz formu kişi tablosuna ekliyoruz.
 
                 ctx.SaveChanges();                                  //Model1 sınıfı için yapılan değişiklikleri yani sql işlemlerini kaydediyoruz.
                 return RedirectToAction("Urunler", "Urun");        //işlem bittikten sonra giriş yap sayfasına aktarıyoruz.
@@ -87,10 +87,10 @@ namespace Market.Controllers
        
         public ActionResult Egitim()
         {
-            using (Model ctx = new Model())   //veritabanı bağlantısı oluşturuyoruz. Burada Model1 bizim veri tabanını uygulamaya eklerken verdiğimiz isim
+            using (Model1 ctx = new Model1())   //veritabanı bağlantısı oluşturuyoruz. Burada Model1 bizim veri tabanını uygulamaya eklerken verdiğimiz isim
             {
                 
-                var state = ctx.Kitap.Where(s => s.KitapTurID == 1).ToList();
+                var state = ctx.Kitaps.Where(s => s.KitapTurID == 1).ToList();
 
                 return View(state);
             }
@@ -99,10 +99,10 @@ namespace Market.Controllers
 
         public ActionResult Edebiyat()
         {
-            using (Model ctx = new Model())   //veritabanı bağlantısı oluşturuyoruz. Burada Model1 bizim veri tabanını uygulamaya eklerken verdiğimiz isim
+            using (Model1 ctx = new Model1())   //veritabanı bağlantısı oluşturuyoruz. Burada Model1 bizim veri tabanını uygulamaya eklerken verdiğimiz isim
             {
                
-                var state = ctx.Kitap.Where(s => s.KitapTurID == 2).ToList();
+                var state = ctx.Kitaps.Where(s => s.KitapTurID == 2).ToList();
 
                 return View(state);
             }
@@ -110,10 +110,10 @@ namespace Market.Controllers
 
         public ActionResult Arastirma()
         {
-            using (Model ctx = new Model())   //veritabanı bağlantısı oluşturuyoruz. Burada Model1 bizim veri tabanını uygulamaya eklerken verdiğimiz isim
+            using (Model1 ctx = new Model1())   //veritabanı bağlantısı oluşturuyoruz. Burada Model1 bizim veri tabanını uygulamaya eklerken verdiğimiz isim
             {
                 
-                var state = ctx.Kitap.Where(s => s.KitapTurID == 3).ToList();
+                var state = ctx.Kitaps.Where(s => s.KitapTurID == 3).ToList();
 
                 return View(state);
             }
@@ -121,10 +121,10 @@ namespace Market.Controllers
 
         public ActionResult Cocuk()
         {
-            using (Model ctx = new Model())   //veritabanı bağlantısı oluşturuyoruz. Burada Model1 bizim veri tabanını uygulamaya eklerken verdiğimiz isim
+            using (Model1 ctx = new Model1())   //veritabanı bağlantısı oluşturuyoruz. Burada Model1 bizim veri tabanını uygulamaya eklerken verdiğimiz isim
             {
                 
-                var state = ctx.Kitap.Where(s => s.KitapTurID == 4).ToList();
+                var state = ctx.Kitaps.Where(s => s.KitapTurID == 4).ToList();
 
                 return View(state);
             }
@@ -132,10 +132,10 @@ namespace Market.Controllers
 
         public ActionResult Din()
         {
-            using (Model ctx = new Model())   //veritabanı bağlantısı oluşturuyoruz. Burada Model1 bizim veri tabanını uygulamaya eklerken verdiğimiz isim
+            using (Model1 ctx = new Model1())   //veritabanı bağlantısı oluşturuyoruz. Burada Model1 bizim veri tabanını uygulamaya eklerken verdiğimiz isim
             {
                 
-                var state = ctx.Kitap.Where(s => s.KitapTurID == 5).ToList();
+                var state = ctx.Kitaps.Where(s => s.KitapTurID == 5).ToList();
 
                 return View(state);
             }
@@ -144,10 +144,10 @@ namespace Market.Controllers
         
         public ActionResult Sanat()
         {
-            using (Model ctx = new Model())   //veritabanı bağlantısı oluşturuyoruz. Burada Model1 bizim veri tabanını uygulamaya eklerken verdiğimiz isim
+            using (Model1 ctx = new Model1())   //veritabanı bağlantısı oluşturuyoruz. Burada Model1 bizim veri tabanını uygulamaya eklerken verdiğimiz isim
             {
                 
-                var state = ctx.Kitap.Where(s => s.KitapTurID == 6).ToList();
+                var state = ctx.Kitaps.Where(s => s.KitapTurID == 6).ToList();
 
                 return View(state);
             }

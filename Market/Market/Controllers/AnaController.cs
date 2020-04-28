@@ -14,11 +14,6 @@ namespace Market.Controllers
             return View();
         }
 
-        public ActionResult Hakkimizda()
-        {
-            return View();
-        }
-
         public ActionResult Iletisim()
         {
             return View();

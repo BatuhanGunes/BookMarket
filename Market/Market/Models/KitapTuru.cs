@@ -12,7 +12,7 @@ namespace Market.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public KitapTuru()
         {
-            Kitap = new HashSet<Kitap>();
+            Kitaps = new HashSet<Kitap>();
         }
 
         [Key]
@@ -23,6 +23,6 @@ namespace Market.Models
         public string KitapTurIsmi { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Kitap> Kitap { get; set; }
+        public virtual ICollection<Kitap> Kitaps { get; set; }
     }
 }

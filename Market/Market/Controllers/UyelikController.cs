@@ -22,7 +22,7 @@ namespace Market.Controllers
         public ActionResult KayitOl(Kisi Kisi)
         {
 
-            using (Model ctx = new Model())
+            using (Model1 ctx = new Model1())
             {
                 Kisi Item = new Kisi();     // Kişi tablosunun nesnesini oluşturuyoruz.
 
@@ -33,7 +33,7 @@ namespace Market.Controllers
                 Item.Cinsiyet = Kisi.Cinsiyet;
                 Item.Parola = Kisi.Parola;
 
-                ctx.Kisi.Add(Item);     //Oluşturduğumuz formu kişi tablosuna ekliyoruz.
+                ctx.Kisis.Add(Item);     //Oluşturduğumuz formu kişi tablosuna ekliyoruz.
 
                 ctx.SaveChanges();                                  //Model1 sınıfı için yapılan değişiklikleri yani sql işlemlerini kaydediyoruz.
                 return RedirectToAction("GirisYap", "Uyelik");        //işlem bittikten sonra giriş yap sayfasına aktarıyoruz.
@@ -47,10 +47,10 @@ namespace Market.Controllers
         {
             Session["Eposta"] = null;
 
-            using (Model ctx = new Model())   //veritabanı bağlantısı oluşturuyoruz. Burada Model1 bizim veri tabanını uygulamaya eklerken verdiğimiz isim
+            using (Model1 ctx = new Model1())   //veritabanı bağlantısı oluşturuyoruz. Burada Model1 bizim veri tabanını uygulamaya eklerken verdiğimiz isim
             {
                 // Daha sonra Kisidan alınan bilgileri veritabanındaki veriler ile karşılaştırıyoruz.
-                Kisi state = ctx.Kisi.Where(s => s.Eposta == kisi.Eposta
+                Kisi state = ctx.Kisis.Where(s => s.Eposta == kisi.Eposta
                                         && s.Parola == kisi.Parola).FirstOrDefault();
 
                 if (state != null)
@@ -83,11 +83,11 @@ namespace Market.Controllers
 
         public ActionResult Profil(Kisi kisi)
         {
-            using (Model ctx = new Model())   //veritabanı bağlantısı oluşturuyoruz. Burada Model1 bizim veri tabanını uygulamaya eklerken verdiğimiz isim
+            using (Model1 ctx = new Model1())   //veritabanı bağlantısı oluşturuyoruz. Burada Model1 bizim veri tabanını uygulamaya eklerken verdiğimiz isim
             {
                 string ema = Convert.ToString(Session["Eposta"]);
                 // Daha sonra Kisidan alınan bilgileri veritabanındaki veriler ile karşılaştırıyoruz.
-                Kisi state = ctx.Kisi.Where(k => k.Eposta == ema).FirstOrDefault();
+                Kisi state = ctx.Kisis.Where(k => k.Eposta == ema).FirstOrDefault();
 
                 List<Kisi> P = new List<Kisi>();
                 P.Add(new Kisi { Ad = state.Ad, Soyad = state.Soyad, Eposta = state.Eposta, TelNo = state.TelNo, Cinsiyet = state.Cinsiyet, Parola = state.Parola });

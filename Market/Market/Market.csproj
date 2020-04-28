@@ -50,6 +50,7 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -136,12 +137,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Adres.cs" />
+    <Compile Include="Models\Adre.cs" />
     <Compile Include="Models\Kisi.cs" />
     <Compile Include="Models\Kitap.cs" />
     <Compile Include="Models\KitapTuru.cs" />
-    <Compile Include="Models\Model.cs" />
-    <Compile Include="Models\sysdiagrams.cs" />
+    <Compile Include="Models\Model1.cs" />
+    <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -162,7 +163,6 @@
     </Content>
     <Content Include="Views\Uyelik\KayitOl.cshtml" />
     <Content Include="Views\Ana\Index.cshtml" />
-    <Content Include="Views\Ana\Hakkimizda.cshtml" />
     <Content Include="Views\Ana\Iletisim.cshtml" />
     <Content Include="Views\SatinAl\SatinAl.cshtml" />
     <Content Include="Views\Urun\Arastirma.cshtml" />
